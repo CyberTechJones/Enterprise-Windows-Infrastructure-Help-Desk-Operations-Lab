@@ -97,7 +97,7 @@ company.local
 
 ### Screenshot: Organizational Units
 
-![Organizational Units](images/ou-structure.png)
+![Organizational Units](ou-structure.png)
 
 ---
 
