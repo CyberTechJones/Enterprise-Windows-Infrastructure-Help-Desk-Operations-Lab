@@ -49,7 +49,7 @@ The goal of this project was to develop hands-on experience with common IT suppo
 
 ## Network Diagram
 
-![Network Diagram](images/network-diagram.png)
+![Network Diagram](images/Networkdiagram.png)
 
 ### Environment
 
