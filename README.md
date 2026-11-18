@@ -116,7 +116,9 @@ Created, managed, and maintained user accounts through Active Directory Users an
 
 ### Screenshot: Active Directory Users and Computers
 
-![ADUC](images/aduc.png)
+![PowerShell verification of departmental Active Directory users](images/ad-users-powershell.png)
+
+PowerShell was used to verify that six fictional employee accounts were created in the correct Finance, HR, and IT Organizational Units. The output confirms each account’s domain logon name and role-specific job title.
 
 ---
 
