@@ -64,7 +64,7 @@ The goal of this project was to develop hands-on experience with common IT suppo
 
 | Component | Configuration |
 |------------|---------------|
-| Domain | company.local |
+| Domain | mydomain.com |
 | Internal Network | 172.16.0.0/24 |
 | Domain Controller IP | 172.16.0.1 |
 | DNS | Active Directory Integrated |
@@ -78,7 +78,7 @@ The goal of this project was to develop hands-on experience with common IT suppo
 ## Organizational Unit Structure
 
 ```text
-company.local
+mydomain.com
 │
 ├── IT
 │   ├── HelpDesk.Admin
@@ -136,7 +136,7 @@ Implemented Role-Based Access Control (RBAC) using Active Directory Security Gro
 
 ### Screenshot: Security Groups
 
-![Security Groups](images/security-groups.png)
+![Security Groups](security-groups.png)
 
 ---
 
