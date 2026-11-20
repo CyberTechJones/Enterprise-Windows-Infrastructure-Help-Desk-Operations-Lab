@@ -180,7 +180,7 @@ Configured and validated Active Directory-integrated DNS.
 - Forward Lookup Zone Management
 - Domain Name Resolution
 - DNS Troubleshooting
-- Client Name Resolution Testing
+- Active Directory Service Discovery Testing
 
 ### Screenshot: DNS Manager
 
