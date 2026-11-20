@@ -153,15 +153,21 @@ Created and deployed Group Policy Objects (GPOs) to manage workstation security 
 - Password Complexity Enabled
 - Reversible encryption: Disabled
 
+![Password Policy](PasswordPolicy.png)
+
 ## Workstation Security Policy
 
 - Guest Account Disabled
 - Screen Lock After 15 Minutes
 - Local Security Restrictions Applied
 
+![Workstation Security Policy](WorkstationSecurityPolicy.png)
+
 ## Company Branding Policy
 
 - Company Desktop Wallpaper Deployed
+
+![Company Branding Policy](CompanyBrandingPolicy.png)
 
 ### Screenshot: Group Policy Management
 
