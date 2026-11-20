@@ -184,7 +184,11 @@ Configured and validated Active Directory-integrated DNS.
 
 ### Screenshot: DNS Manager
 
-![DNS](images/dns-manager.png)
+![DNS](dns-manager.png)
+
+### Screenshot: DNS Resolution Testing
+
+![DNS](dns-resolution-test.png)
 
 ---
 
