@@ -184,7 +184,7 @@ Configured and validated Active Directory-integrated DNS.
 
 ### Screenshot: DNS Manager
 
-![DNS](dns-manager.png)
+![DNS](dnsManager.png)
 
 ### Screenshot: DNS Resolution Testing
 
