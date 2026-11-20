@@ -190,6 +190,8 @@ Configured and validated Active Directory-integrated DNS.
 
 ![DNS](dns-resolution-test.png)
 
+**Troubleshooting performed:** During DNS validation, `DC.mydomain.com` returned both the internal `172.16.0.1` address and the VirtualBox NAT address `10.0.2.15`. I disabled DNS registration on the NAT adapter, restricted the DNS Server service to the internal interface, removed the unwanted Host (`A`) record, and verified that authoritative DNS resolution returned only `172.16.0.1`.
+
 ---
 
 # DHCP Administration
