@@ -169,10 +169,6 @@ Created and deployed Group Policy Objects (GPOs) to manage workstation security 
 
 ![Company Branding Policy](CompanyBrandingPolicy.png)
 
-### Screenshot: Group Policy Management
-
-![GPO](images/gpo-management.png)
-
 ---
 
 # DNS Administration
