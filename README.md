@@ -146,9 +146,12 @@ Created and deployed Group Policy Objects (GPOs) to manage workstation security 
 
 ## Password Policy
 
-- Minimum Length: 12 Characters
+- Enforce password history: 24
+- Maximum password age: 90 days
+- Minimum password age: 1 day
+- Minimum password length: 12 characters
 - Password Complexity Enabled
-- Maximum Password Age: 90 Days
+- Reversible encryption: Disabled
 
 ## Workstation Security Policy
 
