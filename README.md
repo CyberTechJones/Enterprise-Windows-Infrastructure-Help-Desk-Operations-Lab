@@ -306,7 +306,7 @@ PowerShell verification confirms that `CLIENT1` is joined to the `mydomain.com` 
 
 ### Screenshot: Domain User Login
 
-![Domain Login](domain-login.png)
+![Domain Login](domain-login-Wallpaper.png)
 
 The Windows 11 Pro workstation displays the managed company desktop background while PowerShell confirms that the active session uses the standard `MYDOMAIN\Sarah.HR` domain account on `CLIENT1`.
 
