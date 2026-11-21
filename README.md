@@ -239,7 +239,7 @@ Created departmental file shares and configured NTFS permissions using Active Di
 
 ### Screenshot: Shared Folder Permissions
 
-![Shares](images/shared-permissions.png)
+![Shares](shared-permissions.png)
 
 ---
 
