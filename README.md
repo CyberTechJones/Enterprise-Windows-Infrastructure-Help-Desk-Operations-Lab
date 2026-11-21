@@ -287,14 +287,16 @@ PowerShell verification confirms that **999 Active Directory user accounts** exi
 
 # Domain Join Operations
 
-Successfully joined Windows 11 workstations to the Active Directory domain.
+Successfully joined a Windows 11 Pro workstation to the `mydomain.com` Active Directory domain and validated domain authentication, DNS communication, and Domain Controller discovery.
 
 ### Validation Performed
 
-- Domain Authentication
-- DNS Resolution
-- Group Policy Application
-- Shared Resource Access
+- Confirmed Windows 11 Pro domain membership
+- Authenticated with a standard domain user account
+- Verified the authenticating Domain Controller
+- Validated communication with `DC.mydomain.com`
+- Confirmed Active Directory Domain Controller discovery
+- Verified the workstation's placement in the `HR\Computers` Organizational Unit
 
 ### Screenshot: Domain Join Verification
 
