@@ -249,7 +249,6 @@ The HR departmental folder grants `HR_Users` **Modify** access to the folder, su
 
 PowerShell verification confirms that all four SMB shares point to the correct local folders. Share-level access is assigned through Active Directory security groups, with departmental users receiving **Change** access and administrators retaining **Full Control**.
 
-<br>
 ---
 
 # PowerShell Automation
