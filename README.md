@@ -298,7 +298,7 @@ Successfully joined Windows 11 workstations to the Active Directory domain.
 
 ### Screenshot: Domain Join Verification
 
-![Domain Join](images/domain-join.png)
+![Domain Join](domain-join.png)
 
 PowerShell verification confirms that `CLIENT1` is joined to the `mydomain.com` Active Directory domain. The active session uses the standard `MYDOMAIN\Sarah.HR` domain account, authentication is handled by `DC`, and live Domain Controller discovery successfully identifies `DC.mydomain.com` at `172.16.0.1`.
 
