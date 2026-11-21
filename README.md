@@ -228,18 +228,19 @@ Created departmental file shares and configured NTFS permissions using Active Di
 \\DC\IT
 ```
 
-## Access Control
+### Access Control
 
-| Folder | Access Group |
-|----------|-------------|
-| Public | Domain Users |
-| HR | HR_Users |
-| Finance | Finance_Users |
-| IT | IT_Staff |
+| Folder | Access Group | Share Permission | NTFS Permission |
+|---|---|---|---|
+| Public | `Domain Users` | Change | Modify |
+| HR | `HR_Users` | Change | Modify |
+| Finance | `Finance_Users` | Change | Modify |
+| IT | `IT_Staff` | Change | Modify |
 
 ### Screenshot: Shared Folder Permissions
 
 ![Shares](shared-permissions.png)
+The HR departmental folder grants `HR_Users` Modify access to the folder, subfolders, and files. `SYSTEM` and the domain Administrators group retain Full Control, while inheritance is disabled to prevent broad permissions from unrelated users.
 
 ---
 
