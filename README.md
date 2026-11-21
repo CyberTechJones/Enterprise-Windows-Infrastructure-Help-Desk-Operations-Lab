@@ -269,9 +269,11 @@ Get-ADUser -Filter * |
 Select-Object Name, SamAccountName, Enabled
 ```
 
-### Screenshot: PowerShell User Creation Script
+### Screenshot: PowerShell User-Creation Script
 
-![PowerShell](images/powershell-users.png)
+![PowerShell](powershell-users.png)
+
+The PowerShell script reads randomized names from `names.txt`, generates standardized account names, creates the `_USERS` Organizational Unit, and provisions enabled Active Directory accounts using `New-ADUser`. The credential value was redacted before publication.
 
 ### Screenshot: Created Users
 
