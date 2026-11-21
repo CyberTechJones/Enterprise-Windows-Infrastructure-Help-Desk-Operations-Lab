@@ -257,19 +257,16 @@ Used PowerShell to automate administrative tasks and reduce manual account provi
 
 ## Automated Tasks
 
-- Bulk User Creation
-- User Import via CSV
-- Account Reporting
-- Administrative Queries
+- Bulk creation of approximately 1,000 Active Directory user accounts
+- Text-file-driven user provisioning using `names.txt`
+- Active Directory account reporting
+- Administrative queries with `Get-ADUser`
 
-### Example Commands
-
-```powershell
-Import-Csv users.csv | New-ADUser
-```
+### Example Administrative Query
 
 ```powershell
-Get-ADUser -Filter *
+Get-ADUser -Filter * |
+Select-Object Name, SamAccountName, Enabled
 ```
 
 ### Screenshot: PowerShell User Creation Script
