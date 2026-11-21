@@ -241,13 +241,15 @@ Created departmental file shares and configured NTFS permissions using Active Di
 
 ![Shares](shared-permissions.png)
 
-The HR departmental folder grants `HR_Users` ``Modify`` access to the folder, subfolders, and files. `SYSTEM` and the domain Administrators group retain ``Full Control``, while inheritance is disabled to prevent broad permissions from unrelated users.
+The HR departmental folder grants `HR_Users` **Modify** access to the folder, subfolders, and files. `SYSTEM` and the domain Administrators group retain **Full Control**, while inheritance is disabled to prevent broad permissions from unrelated users.
 
 ### Screenshot: SMB Share Access Control
 
-![Shares](shared-permissions.png)
+![Shares](smb-share-access.png)
 
 PowerShell verification confirms that all four SMB shares point to the correct local folders. Share-level access is assigned through Active Directory security groups, with departmental users receiving **Change** access and administrators retaining **Full Control**.
+
+<br>
 ---
 
 # PowerShell Automation
