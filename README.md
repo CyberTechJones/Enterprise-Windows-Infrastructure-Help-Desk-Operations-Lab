@@ -207,7 +207,7 @@ Configured DHCP scopes and automatic IP address assignment for client systems.
 
 ### Screenshot: DHCP Manager
 
-![DHCP](images/dhcp-manager.png)
+![DHCP](dhcp-manager.png)
 
 ### Screenshot: Client IP Configuration
 
