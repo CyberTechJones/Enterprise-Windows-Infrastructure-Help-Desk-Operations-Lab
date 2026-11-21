@@ -211,7 +211,7 @@ Configured DHCP scopes and automatic IP address assignment for client systems.
 
 ### Screenshot: Client IP Configuration
 
-![IPConfig](images/ipconfig-all.png)
+![IPConfig](ipconfig-all.png)
 
 ---
 
