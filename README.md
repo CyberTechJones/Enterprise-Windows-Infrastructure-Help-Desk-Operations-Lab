@@ -257,7 +257,7 @@ Used PowerShell to automate administrative tasks and reduce manual account provi
 
 ## Automated Tasks
 
-- Bulk creation of approximately 1,000 Active Directory user accounts
+- Bulk creation of approximately 999 Active Directory user accounts
 - Text-file-driven user provisioning using `names.txt`
 - Active Directory account reporting
 - Administrative queries with `Get-ADUser`
@@ -275,9 +275,13 @@ Select-Object Name, SamAccountName, Enabled
 
 The PowerShell script reads randomized names from `names.txt`, generates standardized account names, creates the `_USERS` Organizational Unit, and provisions enabled Active Directory accounts using `New-ADUser`. The credential value was redacted before publication.
 
+> **Lab security note:** The original automation used non-expiring passwords for disposable lab accounts. In a production environment, password expiration and lifecycle requirements would be enforced through organizational identity and security policies.
+
 ### Screenshot: Created Users
 
-![Users](images/created-users.png)
+![Users](created-users.png)
+
+PowerShell verification confirms that **999 Active Directory user accounts** exist in the `_USERS` Organizational Unit and displays a representative sample of the provisioned users and their `SamAccountName` values.
 
 ---
 
