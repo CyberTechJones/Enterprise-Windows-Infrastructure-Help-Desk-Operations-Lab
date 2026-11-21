@@ -240,6 +240,7 @@ Created departmental file shares and configured NTFS permissions using Active Di
 ### Screenshot: Shared Folder Permissions
 
 ![Shares](shared-permissions.png)
+
 The HR departmental folder grants `HR_Users` Modify access to the folder, subfolders, and files. `SYSTEM` and the domain Administrators group retain Full Control, while inheritance is disabled to prevent broad permissions from unrelated users.
 
 ---
