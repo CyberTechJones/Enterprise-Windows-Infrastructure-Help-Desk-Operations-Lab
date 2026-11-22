@@ -563,25 +563,26 @@ I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance
 
 **Ticket Status:** Resolved
 
-## Ticket #005 – Domain Authentication and Resource Access Failure
+### Ticket #005 – Domain Authentication and Resource Access Failure
 
 **Issue:** `Sarah.HR` reported that `CLIENT1` could not reliably communicate with the domain or access the HR departmental share.
 
 **Affected User:** `Sarah.HR`  
 **Affected Workstation:** `CLIENT1`  
+**Domain:** `mydomain.com`  
+**Domain Controller:** `DC.mydomain.com`  
 **Internal DNS Server:** `172.16.0.1`  
 **Incorrect DNS Server:** `8.8.8.8`  
-**Domain Controller:** `DC.mydomain.com`  
 **Affected Resource:** `\\DC.mydomain.com\HR`
 
 #### Investigation
 
-- I confirmed the identity of the affected user and workstation.
+- I confirmed the affected user and workstation.
 - I reviewed the Ethernet adapter's IPv4 configuration.
-- I found that `CLIENT1` was manually configured to use the public DNS server `8.8.8.8`.
-- I reviewed the workstation's TCP/IP configuration with `ipconfig /all`.
-- I confirmed that the workstation had a valid DHCP address, subnet mask, default gateway, and DHCP server.
-- I determined that only the DNS configuration was incorrect.
+- I identified a manual DNS override pointing to the public DNS server `8.8.8.8`.
+- I reviewed the workstation's complete TCP/IP configuration with `ipconfig /all`.
+- I confirmed that `CLIENT1` had a valid DHCP address, subnet mask, default gateway, and DHCP server.
+- I determined that the DNS server was the only incorrect network setting.
 - I tested the private Active Directory LDAP service record.
 - I confirmed that the public DNS server could not locate the private LDAP SRV record.
 - I forced Domain Controller discovery and received `ERROR_NO_SUCH_DOMAIN`.
@@ -604,15 +605,15 @@ I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance
 
 #### Step 1: Confirm the Manual DNS Override
 
-![CLIENT1 network configuration showing incorrect DNS server](domain-services-failure-step-1.png)
+![Manual public DNS override configured on CLIENT1](domain-services-failure-step-1.png)
 
 I reviewed the Ethernet adapter's IPv4 properties and confirmed that `CLIENT1` had been manually configured to use the public DNS server `8.8.8.8` instead of obtaining the internal DNS server automatically through DHCP.
 
 #### Step 2: Review the Workstation Network Configuration
 
-![Manual public DNS override configured on CLIENT1](domain-services-failure-step-2.png)
+![CLIENT1 network configuration showing the incorrect DNS server](domain-services-failure-step-2.png)
 
-I reviewed `CLIENT1` with `ipconfig /all` from an elevated PowerShell session using the authorized `MYDOMAIN\a-jsmith` support account. The workstation had a valid DHCP address, subnet mask, default gateway, and DHCP server, but the DNS server was incorrectly configured as `8.8.8.8`.
+I reviewed `CLIENT1` with `ipconfig /all` from an elevated PowerShell session using the authorized `MYDOMAIN\a-jsmith` support account. The workstation had a valid DHCP address of `172.16.0.100`, a subnet mask of `255.255.255.0`, a default gateway of `172.16.0.1`, and a DHCP server of `172.16.0.1`. However, the DNS server was incorrectly configured as `8.8.8.8`.
 
 #### Step 3: Reproduce the Domain Discovery Failure
 
@@ -620,11 +621,17 @@ I reviewed `CLIENT1` with `ipconfig /all` from an elevated PowerShell session us
 
 I tested Active Directory service discovery while signed in as `MYDOMAIN\Sarah.HR`. The public DNS server did not return the private LDAP SRV record, and forced Domain Controller discovery failed with `ERROR_NO_SUCH_DOMAIN`. I also confirmed that the HR share was unavailable through `\\DC.mydomain.com\HR`.
 
-#### Step 4: Validate the Resolution
+#### Step 4: Restore DHCP-Provided DNS
 
-![Successful DNS domain discovery and HR share validation](domain-services-failure-step-4.png)
+![DHCP renewal DNS cache flush and internal DNS restoration](domain-services-failure-step-4.png)
 
-I restored DHCP-provided DNS settings and verified that `DC.mydomain.com` resolved to `172.16.0.1`. I confirmed successful Domain Controller discovery and validated that `MYDOMAIN\Sarah.HR` could access `\\DC.mydomain.com\HR`.
+I returned the Ethernet adapter to automatic DNS configuration, renewed the DHCP settings, and flushed the local DNS resolver cache. I then verified that `CLIENT1` received `172.16.0.1` as its DNS server.
+
+#### Step 5: Validate the Resolution
+
+![Successful DNS Domain Controller discovery and HR share validation](domain-services-failure-step-5.png)
+
+I verified that `DC.mydomain.com` resolved to the correct internal address of `172.16.0.1`. I confirmed successful Domain Controller discovery and validated that `MYDOMAIN\Sarah.HR` could access `\\DC.mydomain.com\HR`.
 
 #### User Communication
 
