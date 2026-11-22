@@ -563,21 +563,74 @@ I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance
 
 **Ticket Status:** Resolved
 
-## Ticket #005 – Domain Authentication and Resource Access Failure
+### Ticket #005 – Domain Authentication and Resource Access Failure
 
-**Issue:** User unable to authenticate to domain.
+**Issue:** `Sarah.HR` reported that `CLIENT1` could not reliably communicate with the domain or access the HR departmental share.
 
-### Root Cause
+**Affected User:** `Sarah.HR`  
+**Affected Workstation:** `CLIENT1`  
+**Internal DNS Server:** `172.16.0.1`  
+**Incorrect DNS Server:** `8.8.8.8`  
+**Domain Controller:** `DC.mydomain.com`  
+**Affected Resource:** `\\DC.mydomain.com\HR`
 
-Incorrect DNS server configuration.
+#### Investigation
 
-### Resolution
+- I confirmed the identity of the affected user and workstation.
+- I reviewed the Ethernet adapter's IPv4 configuration.
+- I found that `CLIENT1` was manually configured to use the public DNS server `8.8.8.8`.
+- I reviewed the workstation's TCP/IP configuration with `ipconfig /all`.
+- I confirmed that the workstation had a valid DHCP address, subnet mask, default gateway, and DHCP server.
+- I determined that only the DNS configuration was incorrect.
+- I tested the private Active Directory LDAP service record.
+- I confirmed that the public DNS server could not locate the private LDAP SRV record.
+- I forced Domain Controller discovery and received `ERROR_NO_SUCH_DOMAIN`.
+- I confirmed that the HR departmental share was unavailable while the incorrect DNS configuration was active.
 
-Updated client DNS configuration to use the Domain Controller and successfully joined the domain.
+**Root Cause:** `CLIENT1` was manually configured to use the public DNS server `8.8.8.8` instead of the internal Active Directory DNS server at `172.16.0.1`. The public resolver could not locate the private LDAP service records required for Active Directory Domain Controller discovery.
 
-### Screenshot
+#### Actions Performed
 
-![Troubleshooting](images/troubleshooting.png)
+- I removed the manually configured public DNS server from the Ethernet adapter.
+- I restored automatic, DHCP-provided DNS configuration.
+- I renewed the workstation's DHCP configuration.
+- I cleared the local DNS resolver cache.
+- I verified that the Ethernet adapter received `172.16.0.1` as its DNS server.
+- I confirmed that `DC.mydomain.com` resolved to `172.16.0.1`.
+- I verified successful Domain Controller discovery.
+- I confirmed that `Sarah.HR` regained access to the HR departmental share.
+
+**Resolution:** I restored the DHCP-provided DNS configuration and verified that internal name resolution, Domain Controller discovery, and access to the HR shared folder were functioning normally.
+
+#### Step 1: Confirm the Manual DNS Override
+
+domain-services-failure-step-1.png
+
+I reviewed the Ethernet adapter's IPv4 properties and confirmed that `CLIENT1` had been manually configured to use the public DNS server `8.8.8.8` instead of obtaining the internal DNS server automatically through DHCP.
+
+#### Step 2: Review the Workstation Network Configuration
+
+domain-services-failure-step-2.png
+
+I reviewed `CLIENT1` with `ipconfig /all` from an elevated PowerShell session using the authorized `MYDOMAIN\a-jsmith` support account. The workstation had a valid DHCP address, subnet mask, default gateway, and DHCP server, but the DNS server was incorrectly configured as `8.8.8.8`.
+
+#### Step 3: Reproduce the Domain Discovery Failure
+
+domain-services-failure-step-3.png
+
+I tested Active Directory service discovery while signed in as `MYDOMAIN\Sarah.HR`. The public DNS server did not return the private LDAP SRV record, and forced Domain Controller discovery failed with `ERROR_NO_SUCH_DOMAIN`. I also confirmed that the HR share was unavailable through `\\DC.mydomain.com\HR`.
+
+#### Step 4: Validate the Resolution
+
+domain-services-failure-step-4.png
+
+I restored DHCP-provided DNS settings and verified that `DC.mydomain.com` resolved to `172.16.0.1`. I confirmed successful Domain Controller discovery and validated that `MYDOMAIN\Sarah.HR` could access `\\DC.mydomain.com\HR`.
+
+#### User Communication
+
+> Hi Sarah, I corrected the DNS configuration on `CLIENT1` and restored communication with the domain and HR shared resources. Please continue working normally and contact the Help Desk if the issue returns.
+
+**Ticket Status:** Resolved
 
 ---
 
