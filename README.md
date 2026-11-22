@@ -563,7 +563,7 @@ I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance
 
 **Ticket Status:** Resolved
 
-### Ticket #005 – Domain Authentication and Resource Access Failure
+## Ticket #005 – Domain Authentication and Resource Access Failure
 
 **Issue:** `Sarah.HR` reported that `CLIENT1` could not reliably communicate with the domain or access the HR departmental share.
 
