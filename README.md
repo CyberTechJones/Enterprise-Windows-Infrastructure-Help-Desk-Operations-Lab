@@ -603,17 +603,17 @@ I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance
 
 **Resolution:** I restored the DHCP-provided DNS configuration and verified that internal name resolution, Domain Controller discovery, and access to the HR shared folder were functioning normally.
 
-#### Step 1: Confirm the Manual DNS Override
-
-![Manual public DNS override configured on CLIENT1](domain-services-failure-step-1.png)
-
-I reviewed the Ethernet adapter's IPv4 properties and confirmed that `CLIENT1` had been manually configured to use the public DNS server `8.8.8.8` instead of obtaining the internal DNS server automatically through DHCP.
-
-#### Step 2: Review the Workstation Network Configuration
+#### Step 1: Review the Workstation Network Configuration
 
 ![CLIENT1 network configuration showing the incorrect DNS server](domain-services-failure-step-2.png)
 
 I reviewed `CLIENT1` with `ipconfig /all` from an elevated PowerShell session using the authorized `MYDOMAIN\a-jsmith` support account. The workstation had a valid DHCP address of `172.16.0.100`, a subnet mask of `255.255.255.0`, a default gateway of `172.16.0.1`, and a DHCP server of `172.16.0.1`. However, the DNS server was incorrectly configured as `8.8.8.8`.
+
+#### Step 2: Confirm the Manual DNS Override
+
+![Manual public DNS override configured on CLIENT1](domain-services-failure-step-1.png)
+
+I reviewed the Ethernet adapter's IPv4 properties and confirmed that `CLIENT1` had been manually configured to use the public DNS server `8.8.8.8` instead of obtaining the internal DNS server automatically through DHCP.
 
 #### Step 3: Reproduce the Domain Discovery Failure
 
