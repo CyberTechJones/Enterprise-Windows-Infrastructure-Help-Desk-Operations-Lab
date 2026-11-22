@@ -563,9 +563,7 @@ I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance
 
 **Ticket Status:** Resolved
 
-
-
-## Ticket #005 – Domain Login Failure
+## Ticket #005 – Domain Authentication and Resource Access Failure
 
 **Issue:** User unable to authenticate to domain.
 
