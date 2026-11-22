@@ -379,19 +379,52 @@ Windows confirmed that the new password was successfully applied to the `Emily.H
 
 ---
 
-## Ticket #002 – Account Lockout
+### Ticket #002 – Account Lockout
 
-**Issue:** User account locked after multiple failed login attempts.
+**Issue:** `Susan.Finance` was unable to sign in after five invalid password attempts caused the domain account to become locked.
 
-### Resolution
+#### Investigation
 
-- Reviewed account status
-- Unlocked account
-- Restored user access
+- Confirmed that the domain account-lockout policy was active
+- Reviewed the user-facing sign-in error on `CLIENT1`
+- Located `Susan.Finance` in Active Directory Users and Computers
+- Verified that Active Directory reported the account as locked
+- Confirmed that the user knew the existing password, so a password reset was unnecessary
 
-### Screenshot
+#### Actions Performed
 
-![Account Unlock](images/account-unlock.png)
+- Selected **Unlock account** in Active Directory Users and Computers
+- Applied the account change without resetting the existing password
+- Verified that `Susan.Finance` could authenticate successfully on `CLIENT1`
+- Confirmed that the restored session authenticated through the `DC` logon server
+
+**Resolution:** The account was unlocked, and `Susan.Finance` regained access using the existing domain password.
+
+#### Step 1: Review the User-Facing Lockout Message
+
+![Account lockout message](account-lockout-step-1.png)
+
+Windows prevented `Susan.Finance` from signing in after the account reached the domain lockout threshold of five invalid password attempts.
+
+#### Step 2: Confirm the Account Lockout in Active Directory
+
+![Locked account in Active Directory](account-lockout-step-2.png)
+
+Active Directory Users and Computers confirmed that the `Susan.Finance` account was locked and displayed the administrative option to unlock the account.
+
+#### Step 3: Unlock the User Account
+
+![Account unlock action](account-lockout-step-3.png)
+
+The Help Desk administrator selected **Unlock account** and applied the change. The existing password was retained because the user confirmed that theestored-access.png
+
+PowerShell confirms that `MYDOMAIN\Susan.Finance` successfully authenticated on `CLIENT1` through the `DC` logon server after the account was unlocked.
+
+#### User Communication
+
+> Hi Susan, your account has been unlocked. Please sign in using your existing password and contact the Help Desk if the issue returns.
+
+**Ticket Status:** Resolved
 
 ---
 
