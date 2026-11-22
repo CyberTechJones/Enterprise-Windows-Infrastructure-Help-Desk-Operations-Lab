@@ -155,6 +155,16 @@ Created and deployed Group Policy Objects (GPOs) to manage workstation security 
 
 ![Password Policy](PasswordPolicy.png)
 
+## Account Lockout Policy
+
+- Locks a domain account after 5 invalid sign-in attempts
+- Keeps the account locked for 15 minutes unless an administrator unlocks it
+- Resets the failed-attempt counter after 15 minutes
+
+![Account Lockout Policy](gpo-account-lockout-policy.png)
+
+The domain account-lockout policy limits repeated password attempts by locking an account after five invalid sign-ins. The lockout remains active for 15 minutes, and the failed-r 15 minutes. This policy supports Help Desk account-lockout investigation and recovery procedures.
+
 ## Workstation Security Policy
 
 - Guest Account Disabled
