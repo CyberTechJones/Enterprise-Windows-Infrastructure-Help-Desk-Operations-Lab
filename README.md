@@ -499,6 +499,72 @@ I verified that `MYDOMAIN\Olivia.Bennett` could access `\\DC\Public` and `\\DC\H
 
 ## Ticket #004: Employee Offboarding
 
+**Issue:** Human Resources requested the immediate removal of domain and departmental access for a separated Finance employee.
+
+**Employee Account:** `Michael.Finance`  
+**Former Department:** Finance  
+**Original Organizational Unit:** `Finance\Users`  
+**Final Organizational Unit:** `Disabled Users`  
+**Removed Security Group:** `Finance_Users`
+
+#### Investigation and Planning
+
+- I reviewed the account's existing Organizational Unit and security-group memberships.
+- I identified `Finance_Users` as the group granting access to the restricted Finance departmental share.
+- I confirmed that the account should be disabled and retained for auditing rather than deleted.
+- I identified the `Disabled Users` Organizational Unit as the final location for the inactive account.
+- I planned to validate that the disabled account could no longer authenticate to the domain.
+
+#### Actions Performed
+
+- I reviewed and documented the account's existing group memberships.
+- I disabled the `Michael.Finance` Active Directory account.
+- I removed the account from the `Finance_Users` security group.
+- I retained `Domain Users` as the account's default primary group.
+- I moved the account from `Finance\Users` to the `Disabled Users` Organizational Unit.
+- I attempted to sign in with the disabled account on `CLIENT1`.
+- I confirmed that Windows blocked the account from authenticating.
+
+**Resolution:** I disabled the separated employee's account, revoked access to Finance resources, moved the account to the designated disabled-account OU, and verified that domain sign-in was blocked.
+
+#### Step 1: Review Existing Group Memberships
+
+![Michael Finance group memberships before offboarding](offboarding-step-1.png)
+
+I reviewed the existing group memberships for `Michael.Finance` before making changes. The account belonged to `Finance_Users`, which granted access to the restricted Finance departmental share, while `Domain Users` remained the account's primary group.
+
+#### Step 2: Disable the Active Directory Account
+
+![Active Directory confirmation that Michael Finance was disabled](offboarding-step-2.png)
+
+I disabled the `Michael.Finance` account to immediately prevent further domain authentication while retaining the user object for auditing and administrative records.
+
+#### Step 3: Remove Departmental Access
+
+![Michael Finance removed from Finance Users security group](offboarding-step-3.png)
+
+I removed `Michael.Finance` from the `Finance_Users` security group, revoking access to the restricted Finance departmental share. I retained `Domain Users` as the account's default primary group.
+
+#### Step 4: Move the Account to Disabled Users
+
+![Michael Finance moved to the Disabled Users Organizational Unit](offboarding-step-4.png)
+
+I moved the disabled `Michael.Finance` account from `Finance\Users` to the `Disabled Users` Organizational Unit. The disabled-account icon confirms that the account remained inactive after the move.
+
+#### Step 5: Validate Sign-In Denial
+
+![Windows sign-in denial for disabled Michael Finance account](offboarding-step-5.png)
+
+I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance` account. Windows denied the sign-in and confirmed that the account had been disabled, verifying that domain access was successfully revoked.
+
+#### Requester Communication
+
+> Hi HR Team, I disabled the `Michael.Finance` domain account, removed access to Finance resources, and moved the account to the `Disabled Users` Organizational Unit. I also verified that the account can no longer authenticate to the domain.
+
+**Ticket Status:** Resolved
+
+
+
 ## Ticket #005 – Domain Login Failure
 
 **Issue:** User unable to authenticate to domain.
