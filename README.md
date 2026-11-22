@@ -318,17 +318,54 @@ To simulate real-world IT support tasks, common Help Desk scenarios were complet
 
 ## Ticket #001 – Password Reset
 
-**Issue:** User unable to log in after forgetting password.
+**Issue:** `Emily.HR` forgot the domain password and could not sign in to the Windows 11 Pro workstation.
 
-### Resolution
+**Actions performed:**
 
-- Reset password in Active Directory
-- Forced password change at next login
-- Verified successful authentication
+- Located `Emily.HR` in Active Directory Users and Computers
+- Assigned a temporary password that met the domain password policy
+- Enabled **User must change password at next logon**
+- Confirmed that Active Directory accepted the password reset
+- Verified that Windows required the user to create a new password
+- Confirmed that the new password was successfully applied
 
-### Screenshot
+**Resolution:** `Emily.HR` created a new private password and regained access to the `mydomain.com` domain.
 
-![Password Reset](images/password-reset.png)
+#### Step 1: Configure the Password Reset
+
+![password reset](password-reset-step-1.png)
+
+The Help Desk administrator reset the password for `Emily.HR` and enabled **User must change password at next logon**. Credential fields were concealed before publication.
+
+#### Step 2: Confirm the Administrative Reset
+
+![password reset](password-reset-step-2.png)
+
+Active Directory Domain Services confirmed that the password for `Emily.HR` was successfully changed.
+
+#### Step 3: Enforce a Password Change at Sign-In
+
+![password reset](password-reset-step-3.png)
+
+When `Emily.HR` attempted to sign in with the temporary password, Windows required a password change before permitting access to the workstation.
+
+#### Step 4: Create a New Private Password
+
+![password reset](password-reset-step-4.png)
+
+The temporary credential was accepted, and Windows prompted `Emily.HR` to create and confirm a new private password for the domain account.
+
+#### Step 5: Confirm the Password Change
+
+![password reset](password-reset-step-5.png)
+
+Windows confirmed that the new password was successfully applied to the `Emily.HR` domain account.
+
+#### User Communication
+
+> Hi Emily, your password has been reset. Please sign in using the temporary password provided to you and create a new password when prompted. Contact the Help Desk if you experience any issues.
+
+**Ticket Status:** Pending User Confirmation
 
 ---
 
