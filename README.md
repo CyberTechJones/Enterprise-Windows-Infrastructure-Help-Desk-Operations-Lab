@@ -379,7 +379,7 @@ Windows confirmed that the new password was successfully applied to the `Emily.H
 
 ---
 
-### Ticket #002 – Account Lockout
+## Ticket #002 – Account Lockout
 
 **Issue:** `Susan.Finance` was unable to sign in after five invalid password attempts caused the domain account to become locked.
 
@@ -431,7 +431,7 @@ PowerShell confirms that `MYDOMAIN\Susan.Finance` successfully authenticated on 
 
 ---
 
-### Ticket #003 – New Employee Onboarding
+## Ticket #003 – New Employee Onboarding
 
 **Issue:** A new Human Resources employee required a domain account, secure first-time sign-in, and access to the appropriate departmental resources.
 
@@ -496,6 +496,8 @@ I verified that `MYDOMAIN\Olivia.Bennett` could access `\\DC\Public` and `\\DC\H
 **Ticket Status:** Resolved
 
 ---
+
+## Ticket #004: Employee Offboarding
 
 ## Ticket #005 – Domain Login Failure
 
