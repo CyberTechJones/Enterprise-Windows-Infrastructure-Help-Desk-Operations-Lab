@@ -494,6 +494,7 @@ I verified that `MYDOMAIN\Olivia.Bennett` could access `\\DC\Public` and `\\DC\H
 > Hi Olivia, your domain account setup is complete. Your sign-in and access to the Public and HR shared folders have been verified. Please contact the Help Desk if you experience any additional sign-in or access issues.
 
 **Ticket Status:** Resolved
+
 ---
 
 ## Ticket #005 – Domain Login Failure
