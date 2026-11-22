@@ -431,37 +431,69 @@ PowerShell confirms that `MYDOMAIN\Susan.Finance` successfully authenticated on 
 
 ---
 
-## Ticket #003 – New Employee Onboarding
+### Ticket #003 – New Employee Onboarding
 
-**Issue:** New employee requires system access.
+**Issue:** A new Human Resources employee required a domain account, secure first-time sign-in, and access to the appropriate departmental resources.
 
-### Resolution
+**New Employee:** `Olivia.Bennett`  
+**Department:** Human Resources  
+**Job Title:** HR Assistant  
+**Organizational Unit:** `HR\Users`  
+**Security Group:** `HR_Users`  
+**Authorized Shares:** `\\DC\Public` and `\\DC\HR`  
+**Restricted Shares:** `\\DC\Finance` and `\\DC\IT`
 
-- Created Active Directory account
-- Added user to appropriate OU
-- Assigned Security Groups
-- Verified access to departmental resources
+#### Investigation and Planning
 
-### Screenshot
+- I reviewed the employee's department and job responsibilities.
+- I identified `HR\Users` as the correct Organizational Unit.
+- I identified `HR_Users` as the appropriate departmental security group.
+- I confirmed that the employee required access to the Public and HR shared folders.
+- I confirmed that Finance and IT resources should remain restricted.
 
-![User Creation](images/new-user.png)
+#### Actions Performed
 
----
+- I created the `Olivia.Bennett` Active Directory account.
+- I assigned a temporary password and required a password change at the next sign-in.
+- I placed the account in the `HR\Users` Organizational Unit.
+- I enabled protection from accidental deletion.
+- I configured the employee's title, department, company, and account description.
+- I added the account to the `HR_Users` security group.
+- I verified successful domain authentication on `CLIENT1`.
+- I validated access to the Public and HR shared folders.
+- I confirmed that access to the Finance and IT shared folders was denied.
 
-## Ticket #004 – Employee Offboarding
+**Resolution:** I completed the employee's Active Directory onboarding, verified the required Human Resources access, and confirmed that unrelated departmental resources remained restricted.
 
-**Issue:** Employee separation from company.
+#### Step 1: Create the Active Directory Account
 
-### Resolution
+![Active Directory account creation for Olivia Bennett](new-user-step-1.png)
 
-- Disabled account
-- Removed group memberships
-- Moved account to Disabled Users OU
+I created the `Olivia.Bennett` domain account in Active Directory Users and Computers. I assigned a temporary password and enabled **User must change password at next logon** so the employee could create a private password during the first sign-in.
 
-### Screenshot
+#### Step 2: Verify Organizational Unit Placement
 
-![Disabled User](images/disabled-user.png)
+![Olivia Bennett Organizational Unit placement](new-user-step-2.png)
 
+I verified that the `Olivia.Bennett` account was created as a user object inside the `HR\Users` Organizational Unit. I also enabled protection from accidental deletion to reduce the risk of unintentionally removing the account.
+
+#### Step 3: Assign the HR Security Group
+
+![Olivia Bennett HR security group assignment](new-user-step-3.png)
+
+I added `Olivia.Bennett` to the `HR_Users` security group while retaining `Domain Users` as the primary group. This group-based assignment grants the required HR resource access without assigning permissions directly to the individual account.
+
+#### Step 4: Validate Departmental Resource Access
+
+![Olivia Bennett departmental resource access validation](new-user-step-4.png)
+
+I verified that `MYDOMAIN\Olivia.Bennett` could access `\\DC\Public` and `\\DC\HR`. Access to `\\DC\Finance` and `\\DC\IT` was denied, confirming that the group-based permissions followed the principle of least privilege.
+
+#### User Communication
+
+> Hi Olivia, your domain account setup is complete. Your sign-in and access to the Public and HR shared folders have been verified. Please contact the Help Desk if you experience any additional sign-in or access issues.
+
+**Ticket Status:** Resolved
 ---
 
 ## Ticket #005 – Domain Login Failure
