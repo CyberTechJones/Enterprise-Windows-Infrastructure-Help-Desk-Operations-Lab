@@ -385,8 +385,7 @@ Windows confirmed that the new password was successfully applied to the `Emily.H
 
 #### Investigation
 
-- Confirmed that the domain account-lockout policy was active
-- Reviewed the user-facing sign-in error on `CLIENT1`
+- Confirmed that the domain account lockout policy was active
 - Located `Susan.Finance` in Active Directory Users and Computers
 - Verified that Active Directory reported the account as locked
 - Confirmed that the user knew the existing password, so a password reset was unnecessary
@@ -398,27 +397,31 @@ Windows confirmed that the new password was successfully applied to the `Emily.H
 - Verified that `Susan.Finance` could authenticate successfully on `CLIENT1`
 - Confirmed that the restored session authenticated through the `DC` logon server
 
-**Resolution:** The account was unlocked, and `Susan.Finance` regained access using the existing domain password.
+**Resolution:** I unlocked the account, and `Susan.Finance` regained access using the existing domain password.
 
 #### Step 1: Review the User-Facing Lockout Message
 
-![Account lockout message](account-lockout-step-1.png)
+![Susan Finance account lockout message](account-lockout-step-1.png)
 
-Windows prevented `Susan.Finance` from signing in after the account reached the domain lockout threshold of five invalid password attempts.
+Windows prevented `Susan.Finance` from signing in after the account reached the domaind attempts.
 
 #### Step 2: Confirm the Account Lockout in Active Directory
 
-![Locked account in Active Directory](account-lockout-step-2.png)
+![](account-lockout-step-2.png)
 
-Active Directory Users and Computers confirmed that the `Susan.Finance` account was locked and displayed the administrative option to unlock the account.
+I reviewed the account properties in Active Directory Users and Computers and confirmed that `Susan.Finance` was locked.
 
 #### Step 3: Unlock the User Account
 
-![Account unlock action](account-lockout-step-3.png)
+![](account-lockout-step-3.png)
 
-The Help Desk administrator selected **Unlock account** and applied the change. The existing password was retained because the user confirmed that theestored-access.png
+I selected **Unlock account** and applied the change. I retained the existing password because the user confirmed that the correct password was known.
 
-PowerShell confirms that `MYDOMAIN\Susan.Finance` successfully authenticated on `CLIENT1` through the `DC` logon server after the account was unlocked.
+#### Step 4: Validate Restored Domain Access
+
+![](account-lockout-restored-access.png)
+
+PowerShell confirms that `MYDOMAIN\Susan.Finance` successfully authenticated on `CLIENT1` through the `DC` logon server after I unlocked the account.
 
 #### User Communication
 
