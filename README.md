@@ -641,71 +641,11 @@ I verified that `DC.mydomain.com` resolved to the correct internal address of `1
 
 ---
 
-# Troubleshooting Experience
-
-Throughout the project several infrastructure issues were intentionally created and resolved.
-
-### Problems Investigated
-
-- Failed Domain Joins
-- DNS Resolution Issues
-- DHCP Lease Problems
-- Authentication Failures
-- Folder Permission Issues
-- Network Connectivity Problems
-
-### Tools Used
-
-- Ping
-- IPCONFIG
-- NSLOOKUP
-- Event Viewer
-- Active Directory Users & Computers
-- Group Policy Management Console
-
----
-
-# Screenshots
-
-## Infrastructure
-
-- Network Diagram
-- Active Directory Users and Computers
-- Organizational Units
-- Security Groups
-- DNS Manager
-- DHCP Manager
-- Group Policy Management
-
-## Help Desk Operations
-
-- Password Reset
-- Account Unlock
-- New User Creation
-- Disabled User Account
-- Shared Folder Permissions
-
-## Client Support
-
-- Domain Join
-- Domain User Login
-- IP Configuration
-- Connectivity Testing
-
----
-
-# Resume Highlights
-
-- Built and administered a Windows Server 2022 Active Directory environment using Oracle VirtualBox.
-- Configured Active Directory, DNS, DHCP, Group Policy, and NAT services to support enterprise authentication and networking.
-- Implemented Organizational Units, Security Groups, and Role-Based Access Control (RBAC).
-- Automated user administration and account provisioning using PowerShell.
-- Simulated real-world Help Desk workflows including password resets, account unlocks, onboarding, offboarding, and troubleshooting.
-- Configured departmental file shares and NTFS permissions using Active Directory groups.
-- Diagnosed and resolved DNS, DHCP, authentication, and network connectivity issues across multiple domain-joined Windows systems.
-
----
-
 # Outcome
 
-Successfully designed, deployed, administered, and supported a small-scale enterprise Windows environment that mirrors common responsibilities performed by Help Desk Technicians, Desktop Support Specialists, and Junior System Administrators. The lab demonstrates practical experience with Active Directory, Windows Server administration, user support, identity management, networking, automation, and troubleshooting.
+I successfully designed, deployed, secured, and supported a small-scale enterprise Windows environment using Windows Server 2022, Windows 11 Pro, and Oracle VirtualBox.
+
+Through this project, I gained hands-on experience with Active Directory administration, DNS and DHCP, Group Policy, PowerShell automation, domain authentication, security groups, SMB and NTFS permissions, and TCP/IP troubleshooting. I also completed realistic Help Desk workflows involving password resets, account unlocks, employee onboarding, employee offboarding, and domain-resource access failures.
+
+This lab demonstrates my ability to manage Windows infrastructure, support end users, troubleshoot technical issues, apply least-privilege access controls, validate resolutions, and document completed work. The skills demonstrated align with common responsibilities performed by Help Desk Technicians, Service Desk Analysts, Desktop Support Specialists, and Junior System Administrators.
+
