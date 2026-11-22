@@ -604,25 +604,25 @@ I attempted to sign in to `CLIENT1` using the disabled `MYDOMAIN\Michael.Finance
 
 #### Step 1: Confirm the Manual DNS Override
 
-domain-services-failure-step-1.png
+![CLIENT1 network configuration showing incorrect DNS server](domain-services-failure-step-1.png)
 
 I reviewed the Ethernet adapter's IPv4 properties and confirmed that `CLIENT1` had been manually configured to use the public DNS server `8.8.8.8` instead of obtaining the internal DNS server automatically through DHCP.
 
 #### Step 2: Review the Workstation Network Configuration
 
-domain-services-failure-step-2.png
+![Manual public DNS override configured on CLIENT1](domain-services-failure-step-2.png)
 
 I reviewed `CLIENT1` with `ipconfig /all` from an elevated PowerShell session using the authorized `MYDOMAIN\a-jsmith` support account. The workstation had a valid DHCP address, subnet mask, default gateway, and DHCP server, but the DNS server was incorrectly configured as `8.8.8.8`.
 
 #### Step 3: Reproduce the Domain Discovery Failure
 
-domain-services-failure-step-3.png
+![Active Directory Domain Controller discovery failure](domain-services-failure-step-3.png)
 
 I tested Active Directory service discovery while signed in as `MYDOMAIN\Sarah.HR`. The public DNS server did not return the private LDAP SRV record, and forced Domain Controller discovery failed with `ERROR_NO_SUCH_DOMAIN`. I also confirmed that the HR share was unavailable through `\\DC.mydomain.com\HR`.
 
 #### Step 4: Validate the Resolution
 
-domain-services-failure-step-4.png
+![Successful DNS domain discovery and HR share validation](domain-services-failure-step-4.png)
 
 I restored DHCP-provided DNS settings and verified that `DC.mydomain.com` resolved to `172.16.0.1`. I confirmed successful Domain Controller discovery and validated that `MYDOMAIN\Sarah.HR` could access `\\DC.mydomain.com\HR`.
 
